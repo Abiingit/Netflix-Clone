@@ -1,118 +1,114 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
 import React from 'react';
-import type {PropsWithChildren} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createNativeStackNavigator, NativeStackScreenProps } from '@react-navigation/native-stack';
+import Icon from 'react-native-vector-icons/Ionicons';
+import HomeScreen from './android/app/src/screens/HomeScreen';
+import SearchScreen from './android/app/src/screens/SearchScreen';
+import DetailsScreen from './android/app/src/screens/DetailsScreen';
+import SplashScreen from './android/app/src/screens/SplashScreen';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+export type RootStackParamList = {
+  Splash: undefined;
+  Main: undefined;
+  Home: undefined;
+  Search: undefined;
+  Details: { movie: any };
+};
 
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
+export type HomeScreenProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
+export type SearchScreenProps = NativeStackScreenProps<RootStackParamList, 'Search'>;
+export type DetailsScreenProps = NativeStackScreenProps<RootStackParamList, 'Details'>;
 
-function Section({children, title}: SectionProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-}
+const Stack = createNativeStackNavigator<RootStackParamList>();
+const Tab = createBottomTabNavigator();
 
-function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
+// HomeStack
+const HomeStack: React.FC = () => (
+  <Stack.Navigator>
+    <Stack.Screen
+      name="Home"
+      component={HomeScreen}
+      options={{ headerShown: false }}
+    />
+    <Stack.Screen
+      name="Details"
+      component={DetailsScreen}
+      options={{
+        headerStyle: { backgroundColor: '#000' },
+        headerTintColor: '#fff',
+        title: 'Movie Details',
+      }}
+    />
+  </Stack.Navigator>
+);
 
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
+// SearchStack
+const SearchStack: React.FC = () => (
+  <Stack.Navigator>
+    <Stack.Screen
+      name="Search"
+      component={SearchScreen}
+      options={{
+        headerStyle: { backgroundColor: '#000' },
+        headerTintColor: '#fff',
+        title: 'Search Movies',
+      }}
+    />
+  </Stack.Navigator>
+);
 
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
+// MainTabNavigator
+const MainTabNavigator: React.FC = () => (
+  <Tab.Navigator
+    initialRouteName="HomeTab"
+    screenOptions={{
+      headerShown: false,
+      tabBarStyle: { backgroundColor: '#000', borderTopWidth: 0 },
+      tabBarActiveTintColor: '#E50914',
+      tabBarInactiveTintColor: '#fff',
+    }}
+  >
+    <Tab.Screen
+      name="HomeTab"
+      component={HomeStack}
+      options={{
+        tabBarLabel: 'Home',
+        tabBarIcon: ({ color, size }) => (
+          <Icon name="home-outline" color={color} size={size} />
+        ),
+      }}
+    />
+    <Tab.Screen
+      name="SearchTab"
+      component={SearchStack}
+      options={{
+        tabBarLabel: 'Search',
+        tabBarIcon: ({ color, size }) => (
+          <Icon name="search-outline" color={color} size={size} />
+        ),
+      }}
+    />
+  </Tab.Navigator>
+);
+
+// Main App component
+const App: React.FC = () => (
+  <NavigationContainer>
+    <Stack.Navigator initialRouteName="Splash">
+      {/* Splash Screen */}
+      <Stack.Screen
+        name="Splash"
+        component={SplashScreen}
+        options={{ headerShown: false }}
       />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
-  );
-}
-
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
+      <Stack.Screen
+        name="Main"
+        component={MainTabNavigator}
+        options={{ headerShown: false }}
+      />
+    </Stack.Navigator>
+  </NavigationContainer>
+);
 
 export default App;
