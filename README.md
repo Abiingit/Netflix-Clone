@@ -20,13 +20,13 @@ This is a **Netflix Clone** mobile application built using **React Native**. The
 
 ## 📂 Screenshots
 ### Home Screen
-<img src="NetflixClone/home.png">
+<img src="NetflixClone/home.jpg">
 
 ### Movie Details
-<img src="NetflixClone/details.png">
+<img src="NetflixClone/details.jpg">
 
 ### Search Screen
-<img src="NetflixClone/search.png">
+<img src="NetflixClone/search.jpg">
 
 ## 🔧 Installation and Setup
 1. Clone the repository:
