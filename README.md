@@ -19,15 +19,10 @@ This is a **Netflix Clone** mobile application built using **React Native**. The
 - **TMDb API** (for fetching movie data)
 
 ## 📂 Screenshots
-<div style="display:flex;" >
-### Home Screen
-<img style="height:90px;width:80px" src="NetflixClone/home.jpg">
-
-### Movie Details
-<img src="NetflixClone/details.jpg">
-
-### Search Screen
-<img src="NetflixClone/search.jpg">
+<div style="display:flex;justify-items:space-around" >
+<img style="height:900px;width:800px" src="NetflixClone/home.jpg">
+<img style="height:900px;width:800px" src="NetflixClone/details.jpg">
+<img style="height:900px;width:800px" src="NetflixClone/search.jpg">
 </div>
 
 ## 🔧 Installation and Setup
