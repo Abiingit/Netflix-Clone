@@ -2,7 +2,7 @@
 
 A React Native application that allows users to explore movies, search for their favorite films, and view details about each movie. The app features a sleek UI with a bottom tab navigator, home and search screens, and detailed movie pages.
 
-##Features 🎯
+## Features 🎯
 
 - 🎬 **Browse Popular Movies** – Displays a collection of trending and popular movies. 🍿🎥🎞
 - 🔍 **Search Functionality** – Users can search for movies using keywords. 🎯📱✨
@@ -10,7 +10,7 @@ A React Native application that allows users to explore movies, search for their
 - 📜 **Movie Details** – View information about selected movies, including title, description, and poster. 📝🎥🖼
 - 🎨 **Sleek UI** – Designed with a clean and user-friendly interface. 🎨📲🖌
 
-##Technologies Used 💻
+## Technologies Used 💻
 
 - **React Native** – Frontend framework 🎭📱
 - **TypeScript** – Ensures type safety 🛡📜
