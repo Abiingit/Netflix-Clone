@@ -20,9 +20,9 @@ This is a **Netflix Clone** mobile application built using **React Native**. The
 
 ## 📂 Screenshots
 <div style="display:flex;justify-items:space-around" >
-<img style="height:900px;width:800px" src="NetflixClone/home.jpg">
-<img style="height:900px;width:800px" src="NetflixClone/details.jpg">
-<img style="height:900px;width:800px" src="NetflixClone/search.jpg">
+<img style="height:400px;width:200px" src="NetflixClone/home.jpg">
+<img style="height:400px;width:200px" src="NetflixClone/details.jpg">
+<img style="height:400px;width:200px" src="NetflixClone/search.jpg">
 </div>
 
 ## 🔧 Installation and Setup
